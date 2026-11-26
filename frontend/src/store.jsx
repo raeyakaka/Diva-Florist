@@ -3,6 +3,7 @@ import { api } from './api'
 
 const Ctx = createContext()
 export const useShop = () => useContext(Ctx)
+export const asset = (p) => import.meta.env.BASE_URL + p.replace(/^\//, '')
 export const rp = (n) => 'Rp ' + Number(n).toLocaleString('id-ID')
 export const WA = 'https://wa.me/6281200000000'
 export const SZ = { S: 'Kecil', M: 'Sedang', L: 'Besar' }
@@ -52,7 +53,7 @@ export function ShopProvider({ children }) {
 }
 
 export const Arch = ({ p }) => (
-  <div className="arch"><img src={p.image} alt={p.alt} loading="lazy" /></div>
+  <div className="arch"><img src={asset(p.image)} alt={p.alt} loading="lazy" /></div>
 )
 
 export const WaBtn = ({ text, cls = 'btn wa' }) => (
