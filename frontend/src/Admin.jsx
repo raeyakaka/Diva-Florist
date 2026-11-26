@@ -9,7 +9,7 @@ export function AdminLogin() {
   async function go(e) {
     e.preventDefault(); setErr('')
     try { const r = await api.post('/admin/login', f); localStorage.setItem('dv-admin', r.data.token); nav('/admin') }
-    catch { setErr('Email atau password salah.') }
+    catch (x) { setErr(x.response?.data?.message || 'Email atau password salah.') }
   }
   return (<section style={{ maxWidth: 420 }}><h1>Login Admin</h1>
     <form onSubmit={go} style={{ marginTop: 20 }}>

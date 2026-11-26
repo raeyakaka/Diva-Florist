@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { ShopProvider, useShop, asset } from './store'
 import { Home, Shop, Product, Cart, Checkout, Order, Track, Info } from './pages'
 import { AdminLogin, AdminDash } from './Admin'
+import { DEMO } from './api'
 
 function Layout() {
   const { count, toast } = useShop()
@@ -19,6 +20,7 @@ function Layout() {
         <NavLink className="cartb" to="/keranjang">Keranjang<span className="badge">{count}</span></NavLink>
       </nav></div></header>
     <main className="wrap">
+      {DEMO && <p className="note" role="note" style={{ marginTop: 16 }}>Mode demo: data produk bawaan, pesanan hanya tersimpan di browser ini dan tidak dikirim ke toko.</p>}
       <Routes>
         <Route path="/" element={<Home />} /><Route path="/katalog" element={<Shop />} />
         <Route path="/produk/:slug" element={<Product />} /><Route path="/keranjang" element={<Cart />} />
